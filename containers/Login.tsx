@@ -4,14 +4,11 @@ import React, {MouseEvent, useState} from "react";
 import {executeRequest} from "../services/apiServices";
 import {NextPage} from "next";
 import {string} from "prop-types";
+import {AccessTokenProps} from "../types/AccessTokenProps";
 
 //Gerenciamento de state por hooks
 
-type LoginProps = {
-    setAccessToken(e: string): void
-}
-
-export const Login:NextPage<LoginProps> = ({setAccessToken}) => {
+export const Login:NextPage<AccessTokenProps> = ({setAccessToken}) => {
 
     //const = constante, contexto global
     //let variável, contexto local
@@ -64,7 +61,9 @@ export const Login:NextPage<LoginProps> = ({setAccessToken}) => {
                     </div>
                     <div className="input">
                         <img src="/lock.svg" alt="Informe sua senha"/>
-                        <input className="password" type="password" placeholder="Senha" value={password} onChange={evento => setPassword(evento.target.value)}/>
+                        <input type="password" placeholder="Senha" value={password} onChange={evento => setPassword(evento.target.value)}/>
+                        {/*<img className="password" src="/eye.svg" alt="Ver senha senha"/>*/}
+
                     </div>
                     <button onClick={doLogin}>Login</button>
                 {/*    Isso seria diferente de passar, por exemplo, doLogin() (nesse caso, seria como falar para executar a função quando o elemento carregasse*/}
